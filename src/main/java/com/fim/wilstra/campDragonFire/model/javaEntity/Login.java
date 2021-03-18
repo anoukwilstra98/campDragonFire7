@@ -33,7 +33,12 @@ public class Login {
     @Column(name = "isActive")
     private boolean isActive;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "personId", nullable = false) //todo now one-to-one, how to 0..1 to 1
-    private Person person;
+    @OneToOne
+    @JoinColumn(name = "loginId")
+    private Employee employee;
+
+    @OneToOne
+    @JoinColumn(name = "loginId")
+    private Renter renter;
+
 }

@@ -21,19 +21,27 @@ public class Employee {
     @Column(name = "employeeId")
     private int id;
 
+    @NonNull
+    @Column(name = "firstname")
+    private String firstName;
+
+    @NonNull
+    @Column(name = "lastName")
+    private String lastName;
+
     //nullable
     @Column(name = "mainFunction")
     @Enumerated(EnumType.STRING)
     private MainFunction mainFunction;
 
-    @NonNull
-    @Column(name = "employeeNumber")
-    private String employeeNumber;
-
-
     @OneToMany(mappedBy = "employee")
     private List<Activity> activities;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Person person;
+    @OneToOne
+    private Login login;
+
+    @ManyToOne
+    @JoinColumn(name = "contactId")
+    private Contact contact;
+
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.hibernate.mapping.Join;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,6 +28,10 @@ public class Contact {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "person") //contactId
-    private List<Person> people;
+    @OneToMany(mappedBy = "contact")
+    private List<Renter> renters;
+
+    @OneToMany(mappedBy = "contact")
+    private List<Employee> employees;
+
 }

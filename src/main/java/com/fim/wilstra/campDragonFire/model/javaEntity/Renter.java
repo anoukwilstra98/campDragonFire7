@@ -20,6 +20,14 @@ public class Renter {
     private int id;
 
     @NonNull
+    @Column(name = "firstname")
+    private String firstName;
+
+    @NonNull
+    @Column(name = "lastName")
+    private String lastName;
+
+    @NonNull
     @Column(name = "alreadyPaid")
     private double alreadyPaid;
 
@@ -31,10 +39,16 @@ public class Renter {
     @OneToMany(mappedBy = "renter") //documentId
     private List<Document> documents;
 
-    @OneToOne
-    @JoinColumn(name = "renterId", insertable = false, updatable = false)
-    private Person person;
-
     @OneToMany(mappedBy = "renter")
     private List<RentedSpot> rentedSpots;
+
+    @OneToOne(mappedBy = "renter")
+    private Login login;
+
+    @ManyToOne
+    @JoinColumn(name = "contactId")
+    private Contact contact;
+
+
+
 }

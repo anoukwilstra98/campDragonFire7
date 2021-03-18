@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/activities")
@@ -15,20 +16,23 @@ public class ActivityController {
     ActivityService activityService;
 
     //http requests use getmapping + location
-//    @GetMapping("/")
-//    public List<Activity> list() {
-//        return activityService.listAll();
-//    }
-
     @GetMapping("/")
-    public String getAll(){
-        return "all activities";
+    public List<Activity> list() {
+        return activityService.listAll();
     }
+
 
     //todo deal with  noSuchElementException
     @GetMapping("/{id}")
-    public Activity get(@PathVariable Integer id) {
-        return activityService.get(id);
+    public Object get(@PathVariable Integer id) {
+
+        try {
+            return activityService.get(id);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     @PostMapping("/")
