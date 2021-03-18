@@ -19,7 +19,7 @@ public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "documentId")
-    private long id;
+    private int id;
 
     @NonNull
     @Column(name = "documentNumber")

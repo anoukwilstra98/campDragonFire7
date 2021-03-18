@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -19,7 +19,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employeeId")
-    private long id;
+    private int id;
 
     //nullable
     @Column(name = "mainFunction")
@@ -32,7 +32,7 @@ public class Employee {
 
 
     @OneToMany(mappedBy = "employee")
-    private Set<Activity> activities;
+    private List<Activity> activities;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Person person;

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class FoodItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FoodItemId")
-    private long id;
+    private int id;
 
     @NonNull
     @Column(name = "foodItemName")
@@ -38,5 +38,5 @@ public class FoodItem {
     private String description;
 
     @OneToMany(mappedBy = "foodItem")
-    private Set<FoodPartOrder> foodPartOrders;
+    private List<FoodPartOrder> foodPartOrders;
 }

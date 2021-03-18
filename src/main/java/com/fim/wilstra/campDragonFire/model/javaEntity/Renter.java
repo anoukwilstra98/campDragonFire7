@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -16,8 +16,8 @@ public class Renter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "RenterID")
-    private long id;
+    @Column(name = "renterID", insertable = false, updatable = false)
+    private int id;
 
     @NonNull
     @Column(name = "alreadyPaid")
@@ -28,13 +28,13 @@ public class Renter {
     private boolean hasCampingCard;
 
     @NonNull
-    @OneToMany(mappedBy ="renter") //documentId
-    private Set<Document> documents;
+    @OneToMany(mappedBy = "renter") //documentId
+    private List<Document> documents;
 
     @OneToOne
-    @JoinColumn(name = "personid")
+    @JoinColumn(name = "renterId", insertable = false, updatable = false)
     private Person person;
 
     @OneToMany(mappedBy = "renter")
-    private Set<RentedSpot> rentedSpots;
+    private List<RentedSpot> rentedSpots;
 }

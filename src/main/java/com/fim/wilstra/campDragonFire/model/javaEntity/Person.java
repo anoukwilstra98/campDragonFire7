@@ -7,7 +7,6 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 
 @Entity
@@ -19,7 +18,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "personId")
-    private long id;
+    private int id;
     @NonNull
     @Column(name = "firstName")
     private String firstName;
@@ -33,16 +32,16 @@ public class Person {
     private Date dateOfBirth;
 
     @OneToOne(mappedBy = "person")
-    @JoinColumn(name  = "employeeID")
+    @JoinColumn(name = "employeeID")
     private Employee employee;
-
 
 
     @OneToOne(mappedBy = "person")
     private Login login;
 
-    @OneToMany(mappedBy = "person") //contactId
-    private Set<Contact> contacts;
+    @ManyToOne
+    @JoinColumn(name = "contactId")
+    private Contact contact;
 
     @OneToOne(mappedBy = "person")
     private Renter renter;

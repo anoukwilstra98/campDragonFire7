@@ -1,7 +1,7 @@
 package com.fim.wilstra.campDragonFire.model.controller;
 
-import com.fim.wilstra.campDragonFire.model.javaEntity.BookedActivity;
-import com.fim.wilstra.campDragonFire.model.service.BookedActivityService;
+import com.fim.wilstra.campDragonFire.model.javaEntity.Renter;
+import com.fim.wilstra.campDragonFire.model.service.RenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookedActivities")
-public class BookedActivityController {
+@RequestMapping("/renters")
+public class RenterController {
 
     @Autowired
-    BookedActivityService bookedActivityservice;
+    RenterService renterService;
 
     @GetMapping("/")
-    public List<BookedActivity> list() {
-        return bookedActivityservice.listAll();
+    public List<Renter> list() {
+        return renterService.listAll();
     }
+
 }

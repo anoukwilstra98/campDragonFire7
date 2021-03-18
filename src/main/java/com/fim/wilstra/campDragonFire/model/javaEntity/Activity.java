@@ -8,6 +8,7 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "activityId")
-    private long id;
+    private int id;
 
     @NonNull
     @Column(name = "activityName")
@@ -42,7 +43,7 @@ public class Activity {
     private Employee employee;
 
     @OneToMany(mappedBy = "activity")
-    private Set<BookedActivity> bookedActivities;
+    private List<BookedActivity> bookedActivities;
 
 
 

@@ -3,9 +3,10 @@ package com.fim.wilstra.campDragonFire.model.service;
 import com.fim.wilstra.campDragonFire.model.javaEntity.Login;
 import com.fim.wilstra.campDragonFire.model.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class LoginService {
 
     @Autowired

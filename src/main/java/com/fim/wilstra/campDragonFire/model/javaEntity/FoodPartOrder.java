@@ -16,7 +16,7 @@ public class FoodPartOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "partorderid")
-    private long id;
+    private int id;
 
     @NonNull
     @Column(name = "quantity")

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -16,7 +17,7 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contactId")
-    private long id;
+    private int id;
 
     @NonNull
     @Column(name = "email")
@@ -26,7 +27,6 @@ public class Contact {
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "personId")
-    private Person person;
+    @OneToMany(mappedBy = "person") //contactId
+    private List<Person> people;
 }

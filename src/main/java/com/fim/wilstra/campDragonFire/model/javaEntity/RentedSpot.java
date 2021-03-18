@@ -7,7 +7,7 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -19,7 +19,7 @@ public class RentedSpot {
     @Id
     @GeneratedValue
     @Column(name = "rentedSpotId", insertable = false, updatable = false)
-    private long id;
+    private int id;
 
     @NonNull
     @Column(name = "numberOfPeople")
@@ -46,8 +46,8 @@ public class RentedSpot {
     private Renter renter;
 
     @OneToMany(mappedBy = "rentedSpot")
-    private Set<BookedActivity> activities;
+    private List<BookedActivity> activities;
 
     @OneToMany(mappedBy = "rentedSpot")
-    private Set<FoodOrder> foodOrders;
+    private List<FoodOrder> foodOrders;
 }

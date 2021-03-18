@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -17,7 +17,7 @@ public class CampingSpot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "campingSpotId")
-    private long id;
+    private int id;
 
     @NonNull
     @Column(name = "spotName")
@@ -28,7 +28,7 @@ public class CampingSpot {
     private boolean hasElectricity;
 
     @NonNull
-    @Column(name ="maxPeople")
+    @Column(name = "maxPeople")
     private int maxPeople;
 
     @NonNull
@@ -36,6 +36,6 @@ public class CampingSpot {
     private float pricePerNight;
 
     @OneToMany(mappedBy = "campingSpot") //campingSpotId
-    private Set<RentedSpot> rentedSpots;
+    private List<RentedSpot> rentedSpots;
 
 }

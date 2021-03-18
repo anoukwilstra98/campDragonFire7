@@ -16,19 +16,19 @@ public class ActivityService {
 
     //contains more methods eg listall()
 
-    public List<Activity> listAll(){
+    public List<Activity> listAll() {
         return (List<Activity>) activityRepository.findAll();
     }
 
-    public void save(Activity activity){
+    public void save(Activity activity) {
         activityRepository.save(activity);
     }
 
-    public Activity get(Integer id){
+    public Activity get(Integer id) {
         return activityRepository.findById(id).get();
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         activityRepository.deleteById(id);
     }
 
